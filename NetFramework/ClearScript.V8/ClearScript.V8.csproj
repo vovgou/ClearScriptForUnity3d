@@ -51,10 +51,10 @@
         <Compile Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyHelpers.cs" Link="V8\SplitProxy\V8SplitProxyHelpers.cs" />
         <Compile Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyManaged.cs" Link="V8\SplitProxy\V8SplitProxyManaged.cs" />
         <Compile Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyNative.cs" Link="V8\SplitProxy\V8SplitProxyNative.cs" />
-        <Compile Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyNative.Generated.cs" Link="V8\SplitProxy\V8SplitProxyNative.Generated.cs">
+        <Compile Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyNative.Unity.Generated.cs" Link="V8\SplitProxy\V8SplitProxyNative.Unity.Generated.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
-            <DependentUpon>V8SplitProxyNative.tt</DependentUpon>
+            <DependentUpon>V8SplitProxyNative.Unity.tt</DependentUpon>
         </Compile>
         <Compile Include="..\..\ClearScript\V8\SplitProxy\V8TestProxyImpl.cs" Link="V8\SplitProxy\V8TestProxyImpl.cs" />
         <Compile Include="..\..\ClearScript\V8\V8ArrayBufferOrViewInfo.cs" Link="V8\V8ArrayBufferOrViewInfo.cs" />
@@ -85,12 +85,13 @@
             <Generator>TextTemplatingFileGenerator</Generator>
             <LastGenOutput>AssemblyInfo.V8.cs</LastGenOutput>
         </None>
-        <None Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyNative.tt" Link="V8\SplitProxy\V8SplitProxyNative.tt">
+        <None Include="..\..\ClearScript\V8\SplitProxy\V8SplitProxyNative.Unity.tt" Link="V8\SplitProxy\V8SplitProxyNative.Unity.tt">
             <Generator>TextTemplatingFileGenerator</Generator>
-            <LastGenOutput>V8SplitProxyNative.Generated.cs</LastGenOutput>
+            <LastGenOutput>V8SplitProxyNative.Unity.Generated.cs</LastGenOutput>
         </None>
     </ItemGroup>
 
+	<!--
     <ItemGroup>
         <None Include="..\..\V8\build\v8\third_party\icu\common\icudtl.dat" Link="ClearScriptV8.ICU.dat">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -158,6 +159,7 @@
             <Visible>false</Visible>
         </None>
     </ItemGroup>
+	-->
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
         <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />

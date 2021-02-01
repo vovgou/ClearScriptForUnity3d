@@ -28,6 +28,10 @@
 //-----------------------------------------------------------------------------
 // compiler support
 //-----------------------------------------------------------------------------
+#ifndef _WIN32
+#define __cdecl 
+#define __stdcall 
+#endif
 
 #if defined(_MSC_VER)
     #define MANAGED_METHOD(TYPE) TYPE __cdecl

@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build ClearScriptV8 for Windows
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Download V8 Library
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build_v8_windows.yml
+          name: v8_windows
+          path: V8/build/targets
+
+      # Runs a single command using the runners shell
+      - name: Run build ClearScriptV8 script
+        shell: cmd
+        run: |
+          cd %GITHUB_WORKSPACE%\ClearScript.V8.Native\scripts
+          call .\make_clearscript_windows.cmd
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ClearScript.V8.Native
+          path: ClearScript.V8.Native/build/targets
+     
