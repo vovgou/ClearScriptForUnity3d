@@ -26,7 +26,7 @@ jobs:
           cd $GITHUB_WORKSPACE/V8
           chmod 755 build_v8_apple.sh
           ./build_v8_apple.sh
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2 
         with:
           name: v8_apple
           path: V8/build/targets
