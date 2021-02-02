@@ -1,11 +1,12 @@
 #!/bin/bash
 
 CLEARSCRIPT_V8_SRC_DIR=$(pwd)/..
+INSTALL_ROOT_DIR=${CLEARSCRIPT_V8_SRC_DIR}/build/targets
 
 echo "Building ClearScript.V8.Native(macOS) ..."
 echo ================================ 
 CLEARSCRIPT_V8_BUILD_DIR=${CLEARSCRIPT_V8_SRC_DIR}/build/macOS
-cmake -Tbuildsystem=1 -GXcode -S ${CLEARSCRIPT_V8_SRC_DIR} -B ${CLEARSCRIPT_V8_BUILD_DIR}
+cmake -Tbuildsystem=1 -GXcode -DCMAKE_INSTALL_PREFIX=${INSTALL_ROOT_DIR} -S ${CLEARSCRIPT_V8_SRC_DIR} -B ${CLEARSCRIPT_V8_BUILD_DIR}
 cmake --build ${CLEARSCRIPT_V8_BUILD_DIR} --config Release --target install
 
 echo "Building ClearScript.V8.Native(iOS) ..."
@@ -35,5 +36,5 @@ echo ================================
 #==========================================================================================
 
 CLEARSCRIPT_V8_BUILD_DIR=${CLEARSCRIPT_V8_SRC_DIR}/build/iOS
-cmake -DCMAKE_TOOLCHAIN_FILE=${CLEARSCRIPT_V8_SRC_DIR}/cmake/ios.toolchain.cmake -DPLATFORM=OS64COMBINED -Tbuildsystem=1 -GXcode -S ${CLEARSCRIPT_V8_SRC_DIR} -B ${CLEARSCRIPT_V8_BUILD_DIR}
+cmake -DCMAKE_TOOLCHAIN_FILE=${CLEARSCRIPT_V8_SRC_DIR}/cmake/ios.toolchain.cmake -DPLATFORM=OS64COMBINED -Tbuildsystem=1 -GXcode -DCMAKE_INSTALL_PREFIX=${INSTALL_ROOT_DIR} -S ${CLEARSCRIPT_V8_SRC_DIR} -B ${CLEARSCRIPT_V8_BUILD_DIR}
 cmake --build ${CLEARSCRIPT_V8_BUILD_DIR} --config Release --target install
